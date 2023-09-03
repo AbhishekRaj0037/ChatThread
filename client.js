@@ -51,7 +51,7 @@ function random(min, max) {
   return Math.floor(Math.random() * (max - min) + min);
 }
 
-const userName = prompt("Enter your name to join the chat");
+const userName = window.prompt("Enter your name to join the chat");
 socket.emit("new-user-joined", userName);
 
 socket.on("user-joined", (userName) => {
