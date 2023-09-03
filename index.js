@@ -1,4 +1,9 @@
 const io = require("socket.io")(8000);
+const express = require("express");
+const app = express();
+const path = require("path");
+
+app.use(express.static(__dirname));
 
 users = {};
 
@@ -21,4 +26,12 @@ io.on("connection", (socket) => {
     socket.broadcast.emit("left-chat", users[socket.id]);
     delete users[socket.id];
   });
+});
+
+app.get("/", function (req, res) {
+  res.sendFile("index.html");
+});
+
+app.listen(3000, () => {
+  console.log("Server running on port 3000");
 });
