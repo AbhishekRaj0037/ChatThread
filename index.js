@@ -29,6 +29,7 @@ io.on("connection", (socket) => {
 });
 
 app.get("/", function (req, res) {
+  console.log("We are here...");
   res.sendFile("index.html");
 });
 
